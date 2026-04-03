@@ -2,7 +2,7 @@ sudo -i
 yum install git -y
 
 
-docker create network my-network
+docker network create my-network
 
 docker run -d \
   --name mysql-container \

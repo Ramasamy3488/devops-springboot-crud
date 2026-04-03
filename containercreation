@@ -1,0 +1,30 @@
+sudo -i
+yum install git -y
+
+
+docker create network my-network
+
+docker run -d \
+  --name mysql-container \
+  --network my-network \
+  -e MYSQL_ROOT_PASSWORD=Rajan@123 \
+  -e MYSQL_DATABASE=mydb \
+  mysql:8
+
+
+
+  docker build -t springboot-tailwind-app:v1 .
+
+  
+
+  docker run -d \
+  --name springboot-app \
+  --network my-network \
+  -p 8080:8080 \
+  -e MYSQL_HOST=mysql-container \
+  -e MYSQL_PORT=3306 \
+  -e MYSQL_DB=mydb \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=Rajan@123 \
+  springboot-app:v1
+

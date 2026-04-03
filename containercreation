@@ -26,5 +26,5 @@ docker run -d \
   -e MYSQL_DB=mydb \
   -e MYSQL_USER=root \
   -e MYSQL_PASSWORD=Rajan@123 \
-  springboot-app:v1
+  springboot-tailwind-app:v1
 

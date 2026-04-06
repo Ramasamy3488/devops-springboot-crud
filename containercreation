@@ -23,7 +23,7 @@ docker run -d \
 --name appcon \
 --network my-network \
 -p 8080:8080 \
-springboot-app:v1
+springboot-tailwind-app:v1
 
 
 /////////////////////////////////////////

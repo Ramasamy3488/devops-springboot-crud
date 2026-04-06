@@ -11,9 +11,9 @@ docker run -d \
   mysql:8
 
 
-git clone https://github.com/spring-projects/spring-petclinic.git
+git clone https://github.com/Ramasamy3488/devops-springboot-crud.git
 
-cd spring-petclinic
+cd devops-springboot-crud
 
 docker build -t springboot-tailwind-app:v1 .
 

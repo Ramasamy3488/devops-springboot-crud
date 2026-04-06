@@ -28,3 +28,60 @@ docker run -d \
   -e MYSQL_PASSWORD=Rajan@123 \
   springboot-tailwind-app:v1
 
+
+
+/////////////////////////////////////////////////////////////////
+
+
+
+git clone https://github.com/spring-projects/spring-petclinic.git
+
+
+mvn clean package -DskipTest
+
+/////////////////////////////////////////////////////
+
+# Use lightweight Java runtime
+FROM eclipse-temurin:17-jre-jammy
+
+# Set working directory
+WORKDIR /app
+
+# Copy JAR file
+COPY spring-petclinic-4.0.0-SNAPSHOT.jar app.jar
+
+# Expose port
+EXPOSE 8080
+
+# Run application
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+
+
+//////////////////////////////////////////////////////////////
+
+
+
+
+
+# Stage 1: Build
+FROM maven:3.9.9-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run
+FROM eclipse-temurin:17-jre-jammy
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+
+
+
+

@@ -29,7 +29,46 @@ springboot-tailwind-app:v1
 ---------------- end of the application ------------------------
 
 
+docker run -d \
+  --name mysql-container \
+  --restart=unless-stopped \
+  -e MYSQL_ROOT_PASSWORD=Root@123 \
+  -e MYSQL_DATABASE=mydb \
+  -p 3306:3306 \
+  -v mysql-data:/var/lib/mysql \
+  mysql:8
+
+----------
+
+docker run -d   --name mysql-container --restart=unless-stopped  --network my-network   -e MYSQL_ROOT_PASSWORD=Rajan@123   -e MYSQL_DATABASE=mydb -v mysql-data:/var/lib/mysql \  mysql:8
+
+
+1. List All Volumes
+	docker volume ls
+
+docker volume inspect mysql-data
+
+2. Inspect a Specific Volume
+	"Mountpoint": "/var/lib/docker/volumes/mysql-data/_data"
+
+3. Check Volume Data (Real-Time Debugging)
+	cd /var/lib/docker/volumes/mysql-data/_data
+	ls
+
+
+4. Check Which Container Uses the Volume
+	docker inspect mysql-container
+
+5. Check Volume Usage (Quick Way)
+	docker ps
+	docker inspect <container-name>
+
+
+
+
 /////////////////////////////////////////
+
+
 
 spring.application.name=studentServer
 

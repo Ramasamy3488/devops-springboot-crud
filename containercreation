@@ -26,6 +26,9 @@ docker run -d \
 springboot-tailwind-app:v1
 
 
+---------------- end of the application ------------------------
+
+
 /////////////////////////////////////////
 
 spring.application.name=studentServer

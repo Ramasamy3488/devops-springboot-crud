@@ -22,7 +22,24 @@ docker run -d \
 
   docker build -t springboot-tailwind-app:v1 .
 
-  
+
+
+docker run -d \
+--name appcon \
+--network mynetwork \
+-p 8080:8080 \
+-e SPRING_DATASOURCE_URL=jdbc:mysql://mysqlcon:3306/mydb \
+-e SPRING_DATASOURCE_USERNAME=root \
+-e SPRING_DATASOURCE_PASSWORD=admin123 \
+springboot-app
+
+
+/////////////////////////////////////////
+
+
+
+
+
 
   docker run -d \
   --name springboot-app \

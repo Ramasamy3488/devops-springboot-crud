@@ -1,14 +1,6 @@
 sudo -i
 yum install git -y
 
-docker run -it -d \
--e MYSQL_ROOT_PASSWORD=admin123 \
--e MYSQL_DATABASE=mydb \
---name mysqlcon \
--p 3306:3306 \
-mysql:5.7
-
-
 docker network create my-network
 
 docker run -d \
@@ -19,19 +11,19 @@ docker run -d \
   mysql:8
 
 
+git clone https://github.com/spring-projects/spring-petclinic.git
 
-  docker build -t springboot-tailwind-app:v1 .
+cd spring-petclinic
+
+docker build -t springboot-tailwind-app:v1 .
 
 
 
 docker run -d \
 --name appcon \
---network mynetwork \
+--network my-network \
 -p 8080:8080 \
--e SPRING_DATASOURCE_URL=jdbc:mysql://mysqlcon:3306/mydb \
--e SPRING_DATASOURCE_USERNAME=root \
--e SPRING_DATASOURCE_PASSWORD=admin123 \
-springboot-app
+springboot-app:v1
 
 
 /////////////////////////////////////////
